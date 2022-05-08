@@ -9,10 +9,13 @@ const generateCertificate = async ({ name, field }) => {
     const svgImage = `
         <svg width="${width}" height="${height}">
           <style>
-          .title { fill: #001; font-size: 18px; font-weight: 600;}
+          .name { fill: #001; font-size: 72px; font-weight: 600; text-anchor: middle;
+            dominant-baseline: middle; }
+          .field { fill: #001; font-size: 32px; font-weight: 600; text-anchor: middle;
+            dominant-baseline: middle;}
           </style>
-          <text x="267" y="378" text-anchor="start" class="title">${name}</text>
-          <text x="267" y="404" text-anchor="start" class="title">${field}</text>
+          <text x="50%" y="790" text-anchor="start" class="name">${name}</text>
+          <text x="50%" y="960" text-anchor="start" class="field">${field}</text>
         </svg>
         `;
     const svgBuffer = Buffer.from(svgImage);
