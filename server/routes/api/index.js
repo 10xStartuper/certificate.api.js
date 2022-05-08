@@ -1,5 +1,5 @@
 const router = require('express').Router();
 
-router.use('/api', require('./api'));
+router.use('/create', require('./create'));
 
 module.exports = router;

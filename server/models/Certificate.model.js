@@ -1,6 +1,6 @@
 //mongoose certificate model
 const mongoose = require('mongoose');
-import uniqueValidator from 'mongoose-unique-validator';
+const uniqueValidator = require('mongoose-unique-validator');
 
 const certificateSchema = new mongoose.Schema(
   {
@@ -14,7 +14,7 @@ const certificateSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   {

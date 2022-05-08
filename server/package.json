@@ -18,7 +18,8 @@
     "ejs": "^3.1.7",
     "express": "^4.18.1",
     "mongoose": "^6.3.2",
-    "mongoose-unique-validator": "^3.0.0"
+    "mongoose-unique-validator": "^3.0.0",
+    "sharp": "^0.30.4"
   },
   "devDependencies": {
     "dotenv": "^16.0.0",
