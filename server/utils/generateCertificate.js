@@ -1,5 +1,4 @@
 const sharp = require('sharp');
-const fs = require('fs');
 const Certificate = require('../models/Certificate.model');
 
 const generateCertificate = async ({ name, field }) => {
@@ -37,7 +36,6 @@ const generateCertificate = async ({ name, field }) => {
     await image.toFile('./public/certificates/' + certificate._id + '.png');
     certificate.image = `${process.env.BASE_URL}/certificates/${certificate._id}.png`;
     await certificate.save();
-
     return certificate;
   } catch (error) {
     console.log(error);
