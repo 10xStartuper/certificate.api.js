@@ -1,8 +1,13 @@
 const sharp = require('sharp');
 const Certificate = require('../models/Certificate.model');
+const generateQR = require('./generateQR');
 
 const generateCertificate = async ({ name, field }) => {
   try {
+    const certificate = new Certificate({
+      name: name,
+      field: field,
+    });
     const width = 2000;
     const height = 1414;
     const svgImage = `
@@ -18,7 +23,10 @@ const generateCertificate = async ({ name, field }) => {
         </svg>
         `;
     const svgBuffer = Buffer.from(svgImage);
-
+    const qrBuffer = await generateQR(
+      `${process.env.BASE_URL + '/certificates/' + certificate._id + '.png'}`,
+      { width: 200, height: 200 }
+    );
     const image = await sharp(
       './public/templates/certificate_01.png'
     ).composite([
@@ -27,12 +35,13 @@ const generateCertificate = async ({ name, field }) => {
         top: 0,
         left: 0,
       },
+      {
+        input: qrBuffer,
+        top: 1214,
+        left: 0,
+      },
     ]);
 
-    const certificate = new Certificate({
-      name: name,
-      field: field,
-    });
     await image.toFile('./public/certificates/' + certificate._id + '.png');
     certificate.image = `${process.env.BASE_URL}/certificates/${certificate._id}.png`;
     await certificate.save();

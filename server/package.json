@@ -19,6 +19,7 @@
     "express": "^4.18.1",
     "mongoose": "^6.3.2",
     "mongoose-unique-validator": "^3.0.0",
+    "qrcode": "^1.5.0",
     "sharp": "^0.30.4"
   },
   "devDependencies": {
