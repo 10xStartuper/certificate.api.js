@@ -1,8 +1,22 @@
+import axios from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import Router from 'next/router'
+import { useEffect } from 'react'
 
 const Home: NextPage = () => {
+  const formSubmit = async (e: any): any => {
+    e.preventDefault()
+    console.log(e.target[1].value)
+    const data = await axios.post('http://localhost:8080/api/create', {
+      name: e.target[0].value,
+      field: e.target[1].value,
+    })
+
+    Router.push('/certificate?id=' + data.data._id)
+
+    console.log(data)
+  }
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-200">
       <Head>
@@ -10,9 +24,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <form
-        action="http://localhost:8080/api/create"
-        method="POST"
         className="flex w-full flex-col rounded-md bg-gray-100 p-5 md:w-2/4"
+        onSubmit={(e) => formSubmit(e)}
       >
         <input
           type="text"
