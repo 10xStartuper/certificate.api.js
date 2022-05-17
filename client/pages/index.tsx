@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   const formSubmit = async (e: any) => {
     e.preventDefault()
     console.log(e.target[1].value)
-    const data = await axios.post('http://localhost:8080/api/create', {
+    const data = await axios.post('https://certificate.bytech.uz/api/create', {
       name: e.target[0].value,
       field: e.target[1].value,
     })

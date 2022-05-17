@@ -12,7 +12,7 @@ export default function Certificate({ request, id }) {
             <div className="w-screen flex flex-row p-24 h-auto items-center justify-between border-orange-600">
                 {request &&
                     <div className="h-auto w-3/5 p-5 bg-white rounded-xl">
-                        <img src={`http://localhost:8080/certificates/${id}.png`} alt="certificate" />
+                        <img src={`https://certificate.bytech.uz/certificates/${id}.png`} alt="certificate" />
                     </div>
                 }
                 {request ?
@@ -23,7 +23,7 @@ export default function Certificate({ request, id }) {
                             <a className="p-5 bg-white rounded-xl hover:bg-blue-600 hover:text-white" href={`https://t.me/share/url?url=${"http://sert.zamineducation.uz/certificate?id=" + id}&text=${text}`}>Telegramda ulashish</a>
                             <a className="p-5 bg-white rounded-xl hover:bg-blue-600 hover:text-white" href={`https://www.facebook.com/sharer/sharer.php?u=${"http://sert.zamineducation.uz/certificate?id=" + id}`}>Facebookda ulashish</a>
                         </div>
-                        <a href={`http://localhost:8080/certificates/${id}.png`} download
+                        <a href={`https://certificate.bytech.uz/certificates/${id}.png`} download
                             className="w-full border-0 bg-blue-700 rounded-xl text-center text-white px-24 py-4">Sertifikatni Yuklab olish</a>
                     </div>) : (
                         <div className="flex flex-1 text-2xl items-center flex-col p-24">Tegishli sertifikat topilmadi</div>
@@ -39,7 +39,7 @@ export async function getServerSideProps(context) {
     const id = context.query.id;
 
     const request = await fetch(
-        `http:/localhost:8080/certificates/${id}.png`
+        `https://certificate.bytech.uz/certificates/${id}.png`
     ).then((res) => {
         console.log(res.status);
         if (res.status == '404') {
