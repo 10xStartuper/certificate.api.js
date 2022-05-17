@@ -5,7 +5,7 @@ import Router from 'next/router'
 import { useEffect } from 'react'
 
 const Home: NextPage = () => {
-  const formSubmit = async (e: any): any => {
+  const formSubmit = async (e: any) => {
     e.preventDefault()
     console.log(e.target[1].value)
     const data = await axios.post('http://localhost:8080/api/create', {
